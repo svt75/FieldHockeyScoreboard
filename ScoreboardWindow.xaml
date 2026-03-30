@@ -1,17 +1,19 @@
 <Window x:Class="FieldHockeyScoreboard.ScoreboardWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextRenderingMode="Aliased"
         Title="Табло"
         Width="540" Height="260"
         WindowStyle="None"
         ResizeMode="NoResize"
         Topmost="True"
         Left="0" Top="0"
-        AllowsTransparency="True"
-        Background="Transparent"
+        AllowsTransparency="False"
+        Background="#1a1a2e"
         ShowInTaskbar="False">
 
-    <Border CornerRadius="8" Background="#1a1a2e" BorderBrush="#16213e" BorderThickness="2">
+    <Border CornerRadius="0" Background="#1a1a2e" BorderThickness="0">
         <Grid Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="45"/>
@@ -20,7 +22,7 @@
             </Grid.RowDefinitions>
 
             <!-- Period -->
-            <Border Grid.Row="0" Background="#16213e" CornerRadius="5" Padding="10,5">
+            <Border Grid.Row="0" Background="#16213e" CornerRadius="0" Padding="10,5">
                 <TextBlock Text="{Binding Period}"
                            FontSize="22" FontWeight="Bold"
                            Foreground="#e94560"
@@ -49,14 +51,10 @@
                 <TextBlock Grid.Column="1"
                            Text="{Binding ScoreDisplay}"
                            FontSize="52" FontWeight="Bold"
-                           Foreground="#0f3460"
+                           Foreground="White"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
-                           Margin="15,0">
-                    <TextBlock.Effect>
-                        <DropShadowEffect Color="White" BlurRadius="15" ShadowDepth="0"/>
-                    </TextBlock.Effect>
-                </TextBlock>
+                           Margin="15,0"/>
 
                 <!-- Team B -->
                 <TextBlock Grid.Column="2"
@@ -85,7 +83,7 @@
                 </StackPanel>
 
                 <!-- Timer -->
-                <Border Grid.Column="1" Background="#0f3460" CornerRadius="5" Padding="15,5" Margin="10,0">
+                <Border Grid.Column="1" Background="#0f3460" CornerRadius="0" Padding="15,5" Margin="10,0">
                     <TextBlock Text="{Binding TimerDisplay}"
                                FontSize="30" FontWeight="Bold"
                                Foreground="#e94560"

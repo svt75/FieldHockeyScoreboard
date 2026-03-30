@@ -1,21 +1,21 @@
 <Window x:Class="FieldHockeyScoreboard.ControlWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Управление табло"
-        Width="540" SizeToContent="Height"
+        Title="Хоккей на траве — Управление"
+        Width="700" MinWidth="500" SizeToContent="Height"
         Left="0" Top="270"
-        ResizeMode="NoResize"
+        ResizeMode="CanResizeWithGrip"
         Background="#2d2d44">
 
     <Window.Resources>
         <Style x:Key="BtnStyle" TargetType="Button">
-            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background" Value="#0f3460"/>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="8,4"/>
-            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Margin" Value="3"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -77,12 +77,12 @@
         </Style>
         <Style x:Key="LabelStyle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#aaa"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Margin" Value="0,0,0,3"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,0,0,4"/>
         </Style>
         <Style x:Key="InputStyle" TargetType="TextBox">
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Padding" Value="6,4"/>
             <Setter Property="Background" Value="#1a1a2e"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="#555"/>
@@ -90,7 +90,12 @@
         </Style>
     </Window.Resources>
 
-    <StackPanel Margin="10">
+    <StackPanel Margin="12">
+
+        <!-- Title -->
+        <TextBlock Text="ХОККЕЙ НА ТРАВЕ — УПРАВЛЕНИЕ"
+                   FontSize="20" FontWeight="Bold" Foreground="#e94560"
+                   HorizontalAlignment="Center" Margin="0,0,0,12"/>
 
         <!-- Team Names -->
         <Grid Margin="0,0,0,10">
@@ -124,11 +129,11 @@
                 <StackPanel Grid.Column="0" HorizontalAlignment="Center">
                     <TextBlock Text="ГОЛЫ А" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Content="−" Width="40" Height="35" Style="{StaticResource BtnDanger}"
+                        <Button Content="−" Width="50" Height="42" Style="{StaticResource BtnDanger}"
                                 Click="ScoreAMinus_Click"/>
-                        <TextBlock Text="{Binding ScoreA}" FontSize="24" FontWeight="Bold"
+                        <TextBlock Text="{Binding ScoreA}" FontSize="30" FontWeight="Bold"
                                    Foreground="White" Margin="10,0" VerticalAlignment="Center"/>
-                        <Button Content="+" Width="40" Height="35" Style="{StaticResource BtnGreen}"
+                        <Button Content="+" Width="50" Height="42" Style="{StaticResource BtnGreen}"
                                 Click="ScoreAPlus_Click"/>
                     </StackPanel>
                 </StackPanel>
@@ -142,11 +147,11 @@
                 <StackPanel Grid.Column="2" HorizontalAlignment="Center">
                     <TextBlock Text="ГОЛЫ Б" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Content="−" Width="40" Height="35" Style="{StaticResource BtnDanger}"
+                        <Button Content="−" Width="50" Height="42" Style="{StaticResource BtnDanger}"
                                 Click="ScoreBMinus_Click"/>
-                        <TextBlock Text="{Binding ScoreB}" FontSize="24" FontWeight="Bold"
+                        <TextBlock Text="{Binding ScoreB}" FontSize="30" FontWeight="Bold"
                                    Foreground="White" Margin="10,0" VerticalAlignment="Center"/>
-                        <Button Content="+" Width="40" Height="35" Style="{StaticResource BtnGreen}"
+                        <Button Content="+" Width="50" Height="42" Style="{StaticResource BtnGreen}"
                                 Click="ScoreBPlus_Click"/>
                     </StackPanel>
                 </StackPanel>
@@ -167,18 +172,18 @@
                     <TextBlock Text="Карточки А" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,3">
                         <Ellipse Width="12" Height="12" Fill="#2ecc71" Margin="0,0,5,0" VerticalAlignment="Center"/>
-                        <Button Content="−" Width="30" Height="28" Style="{StaticResource BtnStyle}"
+                        <Button Content="−" Width="38" Height="34" Style="{StaticResource BtnStyle}"
                                 Click="GreenAMinus_Click"/>
                         <TextBlock Text="{Binding GreenCardsA}" FontSize="16" Foreground="White"
                                    Margin="5,0" VerticalAlignment="Center"/>
-                        <Button Content="+" Width="30" Height="28" Style="{StaticResource BtnStyle}"
+                        <Button Content="+" Width="38" Height="34" Style="{StaticResource BtnStyle}"
                                 Click="GreenAPlus_Click"/>
                         <Ellipse Width="12" Height="12" Fill="#f1c40f" Margin="10,0,5,0" VerticalAlignment="Center"/>
-                        <Button Content="−" Width="30" Height="28" Style="{StaticResource BtnStyle}"
+                        <Button Content="−" Width="38" Height="34" Style="{StaticResource BtnStyle}"
                                 Click="YellowAMinus_Click"/>
                         <TextBlock Text="{Binding YellowCardsA}" FontSize="16" Foreground="White"
                                    Margin="5,0" VerticalAlignment="Center"/>
-                        <Button Content="+" Width="30" Height="28" Style="{StaticResource BtnStyle}"
+                        <Button Content="+" Width="38" Height="34" Style="{StaticResource BtnStyle}"
                                 Click="YellowAPlus_Click"/>
                     </StackPanel>
                 </StackPanel>
@@ -188,18 +193,18 @@
                     <TextBlock Text="Карточки Б" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,3">
                         <Ellipse Width="12" Height="12" Fill="#2ecc71" Margin="0,0,5,0" VerticalAlignment="Center"/>
-                        <Button Content="−" Width="30" Height="28" Style="{StaticResource BtnStyle}"
+                        <Button Content="−" Width="38" Height="34" Style="{StaticResource BtnStyle}"
                                 Click="GreenBMinus_Click"/>
                         <TextBlock Text="{Binding GreenCardsB}" FontSize="16" Foreground="White"
                                    Margin="5,0" VerticalAlignment="Center"/>
-                        <Button Content="+" Width="30" Height="28" Style="{StaticResource BtnStyle}"
+                        <Button Content="+" Width="38" Height="34" Style="{StaticResource BtnStyle}"
                                 Click="GreenBPlus_Click"/>
                         <Ellipse Width="12" Height="12" Fill="#f1c40f" Margin="10,0,5,0" VerticalAlignment="Center"/>
-                        <Button Content="−" Width="30" Height="28" Style="{StaticResource BtnStyle}"
+                        <Button Content="−" Width="38" Height="34" Style="{StaticResource BtnStyle}"
                                 Click="YellowBMinus_Click"/>
                         <TextBlock Text="{Binding YellowCardsB}" FontSize="16" Foreground="White"
                                    Margin="5,0" VerticalAlignment="Center"/>
-                        <Button Content="+" Width="30" Height="28" Style="{StaticResource BtnStyle}"
+                        <Button Content="+" Width="38" Height="34" Style="{StaticResource BtnStyle}"
                                 Click="YellowBPlus_Click"/>
                     </StackPanel>
                 </StackPanel>
@@ -213,14 +218,14 @@
                 <TextBlock Text="{Binding TimerDisplay}" FontSize="28" FontWeight="Bold"
                            Foreground="#e94560" HorizontalAlignment="Center" Margin="0,5"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
-                    <Button x:Name="BtnStartPause" Content="СТАРТ" Width="90" Height="35"
+                    <Button x:Name="BtnStartPause" Content="СТАРТ" Width="110" Height="42"
                             Style="{StaticResource BtnGreen}" Click="StartPause_Click"/>
-                    <Button Content="СБРОС" Width="90" Height="35"
+                    <Button Content="СБРОС" Width="110" Height="42"
                             Style="{StaticResource BtnStyle}" Click="ResetTimer_Click"/>
                     <TextBlock Text="Минуты:" Foreground="#aaa" VerticalAlignment="Center" Margin="10,0,5,0"/>
                     <TextBox x:Name="TxtMinutes" Width="50" Style="{StaticResource InputStyle}"
                              Text="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    <Button Content="SET" Width="45" Height="35"
+                    <Button Content="SET" Width="55" Height="42"
                             Style="{StaticResource BtnStyle}" Click="SetTimer_Click"/>
                 </StackPanel>
             </StackPanel>
@@ -231,13 +236,13 @@
             <StackPanel>
                 <TextBlock Text="ПЕРИОД" Style="{StaticResource LabelStyle}" HorizontalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
-                    <Button Content="1 ТАЙМ" Width="85" Height="30" Style="{StaticResource BtnStyle}"
+                    <Button Content="1 ТАЙМ" Width="110" Height="38" Style="{StaticResource BtnStyle}"
                             Click="Period1_Click"/>
-                    <Button Content="ПЕРЕРЫВ" Width="85" Height="30" Style="{StaticResource BtnStyle}"
+                    <Button Content="ПЕРЕРЫВ" Width="110" Height="38" Style="{StaticResource BtnStyle}"
                             Click="PeriodBreak_Click"/>
-                    <Button Content="2 ТАЙМ" Width="85" Height="30" Style="{StaticResource BtnStyle}"
+                    <Button Content="2 ТАЙМ" Width="110" Height="38" Style="{StaticResource BtnStyle}"
                             Click="Period2_Click"/>
-                    <Button Content="БУЛЛИТЫ" Width="85" Height="30" Style="{StaticResource BtnDanger}"
+                    <Button Content="БУЛЛИТЫ" Width="110" Height="38" Style="{StaticResource BtnDanger}"
                             Click="PeriodShootout_Click"/>
                 </StackPanel>
             </StackPanel>
@@ -245,10 +250,10 @@
 
         <!-- Bottom Controls -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
-            <Button x:Name="BtnMonitor" Content="&#x1F5B5; 2-й МОНИТОР" Height="35"
-                    Style="{StaticResource BtnStyle}" Click="MoveToMonitor_Click" Padding="12,4"/>
-            <Button Content="&#x26A0; СБРОС МАТЧА" Height="35"
-                    Style="{StaticResource BtnDanger}" Click="ResetMatch_Click" Padding="12,4"/>
+            <Button x:Name="BtnMonitor" Content="&#x1F5B5; 2-й МОНИТОР" Height="42"
+                    Style="{StaticResource BtnStyle}" Click="MoveToMonitor_Click" Padding="16,6"/>
+            <Button Content="&#x26A0; СБРОС МАТЧА" Height="42"
+                    Style="{StaticResource BtnDanger}" Click="ResetMatch_Click" Padding="16,6"/>
         </StackPanel>
     </StackPanel>
 </Window>
