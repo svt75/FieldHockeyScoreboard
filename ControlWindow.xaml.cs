@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Windows;
+using Microsoft.Win32;
 
 namespace FieldHockeyScoreboard
 {
@@ -75,6 +76,29 @@ namespace FieldHockeyScoreboard
         private void PeriodBreak_Click(object sender, RoutedEventArgs e) => _game.Period = "ПЕРЕРЫВ";
         private void Period2_Click(object sender, RoutedEventArgs e) => _game.Period = "2 ТАЙМ";
         private void PeriodShootout_Click(object sender, RoutedEventArgs e) => _game.Period = "БУЛЛИТЫ";
+
+        // Logos
+        private void LoadLogoA_Click(object sender, RoutedEventArgs e)
+        {
+            var path = PickImageFile();
+            if (path != null) _game.LoadLogoA(path);
+        }
+
+        private void LoadLogoB_Click(object sender, RoutedEventArgs e)
+        {
+            var path = PickImageFile();
+            if (path != null) _game.LoadLogoB(path);
+        }
+
+        private static string PickImageFile()
+        {
+            var dlg = new OpenFileDialog
+            {
+                Filter = "Изображения|*.png;*.jpg;*.jpeg;*.bmp;*.gif|Все файлы|*.*",
+                Title = "Выберите логотип"
+            };
+            return dlg.ShowDialog() == true ? dlg.FileName : null;
+        }
 
         // Monitor switch
         private void MoveToMonitor_Click(object sender, RoutedEventArgs e)

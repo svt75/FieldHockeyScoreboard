@@ -1,6 +1,8 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
 namespace FieldHockeyScoreboard
@@ -80,6 +82,43 @@ namespace FieldHockeyScoreboard
 
         public string CardsADisplay => $"\u25CF{_greenCardsA}  \u25CF{_yellowCardsA}";
         public string CardsBDisplay => $"\u25CF{_greenCardsB}  \u25CF{_yellowCardsB}";
+
+        private ImageSource _logoASource;
+        private ImageSource _logoBSource;
+
+        public ImageSource LogoASource
+        {
+            get => _logoASource;
+            set { _logoASource = value; OnPropertyChanged(); }
+        }
+
+        public ImageSource LogoBSource
+        {
+            get => _logoBSource;
+            set { _logoBSource = value; OnPropertyChanged(); }
+        }
+
+        public void LoadLogoA(string path)
+        {
+            LogoASource = LoadImage(path);
+        }
+
+        public void LoadLogoB(string path)
+        {
+            LogoBSource = LoadImage(path);
+        }
+
+        private static BitmapImage LoadImage(string path)
+        {
+            var bmp = new BitmapImage();
+            bmp.BeginInit();
+            bmp.UriSource = new Uri(path, UriKind.Absolute);
+            bmp.CacheOption = BitmapCacheOption.OnLoad;
+            bmp.DecodePixelHeight = 80;
+            bmp.EndInit();
+            bmp.Freeze();
+            return bmp;
+        }
 
         public string Period
         {

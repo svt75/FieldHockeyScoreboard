@@ -39,13 +39,16 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Team A -->
-                <TextBlock Grid.Column="0"
-                           Text="{Binding TeamAName}"
-                           FontSize="24" FontWeight="Bold"
-                           Foreground="White"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           TextTrimming="CharacterEllipsis"/>
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="{Binding LogoASource}" Width="40" Height="40"
+                           Stretch="Uniform" HorizontalAlignment="Center"
+                           Margin="0,0,0,2" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                    <TextBlock Text="{Binding TeamAName}"
+                               FontSize="24" FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               TextTrimming="CharacterEllipsis"/>
+                </StackPanel>
 
                 <!-- Score -->
                 <TextBlock Grid.Column="1"
@@ -57,13 +60,16 @@
                            Margin="15,0"/>
 
                 <!-- Team B -->
-                <TextBlock Grid.Column="2"
-                           Text="{Binding TeamBName}"
-                           FontSize="24" FontWeight="Bold"
-                           Foreground="White"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           TextTrimming="CharacterEllipsis"/>
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="{Binding LogoBSource}" Width="40" Height="40"
+                           Stretch="Uniform" HorizontalAlignment="Center"
+                           Margin="0,0,0,2" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                    <TextBlock Text="{Binding TeamBName}"
+                               FontSize="24" FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               TextTrimming="CharacterEllipsis"/>
+                </StackPanel>
             </Grid>
 
             <!-- Bottom: Timer + Cards -->

@@ -108,11 +108,23 @@
                 <TextBlock Text="Команда А" Style="{StaticResource LabelStyle}"/>
                 <TextBox x:Name="TxtTeamA" Style="{StaticResource InputStyle}"
                          Text="{Binding TeamAName, UpdateSourceTrigger=PropertyChanged}"/>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <Button Content="ЛОГО А" Style="{StaticResource BtnStyle}" Click="LoadLogoA_Click"
+                            Height="32" Padding="10,4"/>
+                    <Image x:Name="PreviewLogoA" Source="{Binding LogoASource}"
+                           Width="32" Height="32" Stretch="Uniform" Margin="8,0,0,0"/>
+                </StackPanel>
             </StackPanel>
             <StackPanel Grid.Column="2">
                 <TextBlock Text="Команда Б" Style="{StaticResource LabelStyle}"/>
                 <TextBox x:Name="TxtTeamB" Style="{StaticResource InputStyle}"
                          Text="{Binding TeamBName, UpdateSourceTrigger=PropertyChanged}"/>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <Button Content="ЛОГО Б" Style="{StaticResource BtnStyle}" Click="LoadLogoB_Click"
+                            Height="32" Padding="10,4"/>
+                    <Image x:Name="PreviewLogoB" Source="{Binding LogoBSource}"
+                           Width="32" Height="32" Stretch="Uniform" Margin="8,0,0,0"/>
+                </StackPanel>
             </StackPanel>
         </Grid>
 
