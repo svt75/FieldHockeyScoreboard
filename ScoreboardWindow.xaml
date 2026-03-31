@@ -10,70 +10,76 @@
         Topmost="True"
         Left="0" Top="0"
         AllowsTransparency="False"
-        Background="#1a1a2e"
+        Background="#000000"
         ShowInTaskbar="False">
 
-    <Border CornerRadius="0" Background="#1a1a2e" BorderThickness="0">
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="45"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="28"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="46"/>
+        </Grid.RowDefinitions>
 
-            <!-- Period -->
-            <Border Grid.Row="0" Background="#16213e" CornerRadius="0" Padding="10,5">
-                <TextBlock Text="{Binding Period}"
-                           FontSize="22" FontWeight="Bold"
-                           Foreground="#e94560"
+        <!-- Row 0: Period -->
+        <Border Grid.Row="0" Background="#111111">
+            <TextBlock Text="{Binding Period}"
+                       FontFamily="Consolas"
+                       FontSize="20" FontWeight="Bold"
+                       Foreground="#FF4444"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+        </Border>
+
+        <!-- Row 1: Logos + Teams + Score -->
+        <Grid Grid.Row="1" Margin="4,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="130"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Team A: logo + name -->
+            <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Source="{Binding LogoASource}" Width="50" Height="50"
+                       Stretch="Uniform" HorizontalAlignment="Center"
+                       Margin="0,0,0,4" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                <TextBlock Text="{Binding TeamAName}"
+                           FontFamily="Consolas"
+                           FontSize="16" FontWeight="Bold"
+                           Foreground="#FFFFFF"
+                           HorizontalAlignment="Center"
+                           TextTrimming="CharacterEllipsis"
+                           MaxWidth="126"/>
+            </StackPanel>
+
+            <!-- Score — максимально крупно -->
+            <Viewbox Grid.Column="1" Stretch="Uniform" Margin="0,8">
+                <TextBlock Text="{Binding ScoreDisplay}"
+                           FontFamily="Consolas"
+                           FontWeight="Bold"
+                           Foreground="#FFFF00"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"/>
-            </Border>
+            </Viewbox>
 
-            <!-- Score Row -->
-            <Grid Grid.Row="1" VerticalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <!-- Team A -->
-                <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Image Source="{Binding LogoASource}" Width="40" Height="40"
-                           Stretch="Uniform" HorizontalAlignment="Center"
-                           Margin="0,0,0,2" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
-                    <TextBlock Text="{Binding TeamAName}"
-                               FontSize="24" FontWeight="Bold"
-                               Foreground="White"
-                               HorizontalAlignment="Center"
-                               TextTrimming="CharacterEllipsis"/>
-                </StackPanel>
-
-                <!-- Score -->
-                <TextBlock Grid.Column="1"
-                           Text="{Binding ScoreDisplay}"
-                           FontSize="52" FontWeight="Bold"
-                           Foreground="White"
+            <!-- Team B: logo + name -->
+            <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Source="{Binding LogoBSource}" Width="50" Height="50"
+                       Stretch="Uniform" HorizontalAlignment="Center"
+                       Margin="0,0,0,4" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                <TextBlock Text="{Binding TeamBName}"
+                           FontFamily="Consolas"
+                           FontSize="16" FontWeight="Bold"
+                           Foreground="#FFFFFF"
                            HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Margin="15,0"/>
+                           TextTrimming="CharacterEllipsis"
+                           MaxWidth="126"/>
+            </StackPanel>
+        </Grid>
 
-                <!-- Team B -->
-                <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Image Source="{Binding LogoBSource}" Width="40" Height="40"
-                           Stretch="Uniform" HorizontalAlignment="Center"
-                           Margin="0,0,0,2" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
-                    <TextBlock Text="{Binding TeamBName}"
-                               FontSize="24" FontWeight="Bold"
-                               Foreground="White"
-                               HorizontalAlignment="Center"
-                               TextTrimming="CharacterEllipsis"/>
-                </StackPanel>
-            </Grid>
-
-            <!-- Bottom: Timer + Cards -->
-            <Grid Grid.Row="2">
+        <!-- Row 2: Cards + Timer -->
+        <Border Grid.Row="2" Background="#111111">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
@@ -82,29 +88,30 @@
 
                 <!-- Cards A -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Ellipse Width="14" Height="14" Fill="#2ecc71" Margin="0,0,3,0"/>
-                    <TextBlock Text="{Binding GreenCardsA}" Foreground="White" FontSize="16" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                    <Ellipse Width="14" Height="14" Fill="#f1c40f" Margin="0,0,3,0"/>
-                    <TextBlock Text="{Binding YellowCardsA}" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                    <Ellipse Width="16" Height="16" Fill="#00FF00" Margin="0,0,4,0"/>
+                    <TextBlock Text="{Binding GreenCardsA}" FontFamily="Consolas" Foreground="White" FontSize="20" FontWeight="Bold" Margin="0,0,12,0" VerticalAlignment="Center"/>
+                    <Ellipse Width="16" Height="16" Fill="#FFFF00" Margin="0,0,4,0"/>
+                    <TextBlock Text="{Binding YellowCardsA}" FontFamily="Consolas" Foreground="White" FontSize="20" FontWeight="Bold" VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <!-- Timer -->
-                <Border Grid.Column="1" Background="#0f3460" CornerRadius="0" Padding="15,5" Margin="10,0">
+                <!-- Timer — крупно -->
+                <Border Grid.Column="1" Background="#1a0000" Padding="16,2" Margin="8,4">
                     <TextBlock Text="{Binding TimerDisplay}"
-                               FontSize="30" FontWeight="Bold"
-                               Foreground="#e94560"
+                               FontFamily="Consolas"
+                               FontSize="34" FontWeight="Bold"
+                               Foreground="#FF4444"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"/>
                 </Border>
 
                 <!-- Cards B -->
                 <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Ellipse Width="14" Height="14" Fill="#2ecc71" Margin="0,0,3,0"/>
-                    <TextBlock Text="{Binding GreenCardsB}" Foreground="White" FontSize="16" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                    <Ellipse Width="14" Height="14" Fill="#f1c40f" Margin="0,0,3,0"/>
-                    <TextBlock Text="{Binding YellowCardsB}" Foreground="White" FontSize="16" VerticalAlignment="Center"/>
+                    <Ellipse Width="16" Height="16" Fill="#00FF00" Margin="0,0,4,0"/>
+                    <TextBlock Text="{Binding GreenCardsB}" FontFamily="Consolas" Foreground="White" FontSize="20" FontWeight="Bold" Margin="0,0,12,0" VerticalAlignment="Center"/>
+                    <Ellipse Width="16" Height="16" Fill="#FFFF00" Margin="0,0,4,0"/>
+                    <TextBlock Text="{Binding YellowCardsB}" FontFamily="Consolas" Foreground="White" FontSize="20" FontWeight="Bold" VerticalAlignment="Center"/>
                 </StackPanel>
             </Grid>
-        </Grid>
-    </Border>
+        </Border>
+    </Grid>
 </Window>
