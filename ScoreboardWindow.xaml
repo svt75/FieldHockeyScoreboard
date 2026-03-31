@@ -14,73 +14,75 @@
         ShowInTaskbar="False">
 
     <Window.Resources>
-        <!-- Семисегментный шрифт -->
         <FontFamily x:Key="Seg7">pack://application:,,,/Fonts/#DSEG7 Classic</FontFamily>
     </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="26"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="48"/>
         </Grid.RowDefinitions>
 
-        <!-- Row 0: Period -->
+        <!-- Row 0: Team Names -->
         <Border Grid.Row="0" Background="#0a0a0a">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding TeamAName}"
+                           FontFamily="Consolas" FontSize="20" FontWeight="Bold"
+                           Foreground="#FFFFFF"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="{Binding TeamBName}"
+                           FontFamily="Consolas" FontSize="20" FontWeight="Bold"
+                           Foreground="#FFFFFF"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- Row 1: Period -->
+        <Border Grid.Row="1" Background="#0f0000">
             <TextBlock Text="{Binding Period}"
                        FontFamily="Consolas"
-                       FontSize="18" FontWeight="Bold"
+                       FontSize="22" FontWeight="Bold"
                        Foreground="#FF3333"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"/>
         </Border>
 
-        <!-- Row 1: Logos + Teams + Score -->
-        <Grid Grid.Row="1">
+        <!-- Row 2: Logo A + Score + Logo B -->
+        <Grid Grid.Row="2" Margin="2,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="80"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="80"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Team A: logo + name -->
-            <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Image Source="{Binding LogoASource}" Width="52" Height="52"
-                       Stretch="Uniform" HorizontalAlignment="Center"
-                       Margin="0,0,0,2" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
-                <TextBlock Text="{Binding TeamAName}"
-                           FontFamily="Consolas"
-                           FontSize="13" FontWeight="Bold"
-                           Foreground="#CCCCCC"
-                           HorizontalAlignment="Center"
-                           TextTrimming="CharacterEllipsis"
-                           MaxWidth="116"/>
-            </StackPanel>
+            <!-- Logo A -->
+            <Image Grid.Column="0" Source="{Binding LogoASource}"
+                   Width="70" Height="70" Stretch="Uniform"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   RenderOptions.BitmapScalingMode="NearestNeighbor"/>
 
-            <!-- Score — семисегментный, максимально крупно -->
-            <Viewbox Grid.Column="1" Stretch="Uniform" Margin="4,6">
+            <!-- Score -->
+            <Viewbox Grid.Column="1" Stretch="Uniform" Margin="4,4">
                 <TextBlock Text="{Binding ScoreDisplay}"
                            FontFamily="{StaticResource Seg7}"
                            Foreground="#FFCC00"/>
             </Viewbox>
 
-            <!-- Team B: logo + name -->
-            <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Image Source="{Binding LogoBSource}" Width="52" Height="52"
-                       Stretch="Uniform" HorizontalAlignment="Center"
-                       Margin="0,0,0,2" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
-                <TextBlock Text="{Binding TeamBName}"
-                           FontFamily="Consolas"
-                           FontSize="13" FontWeight="Bold"
-                           Foreground="#CCCCCC"
-                           HorizontalAlignment="Center"
-                           TextTrimming="CharacterEllipsis"
-                           MaxWidth="116"/>
-            </StackPanel>
+            <!-- Logo B -->
+            <Image Grid.Column="2" Source="{Binding LogoBSource}"
+                   Width="70" Height="70" Stretch="Uniform"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   RenderOptions.BitmapScalingMode="NearestNeighbor"/>
         </Grid>
 
-        <!-- Row 2: Cards + Timer -->
-        <Border Grid.Row="2" Background="#0a0a0a">
+        <!-- Row 3: Cards + Timer -->
+        <Border Grid.Row="3" Background="#0a0a0a">
             <Grid Margin="6,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -96,7 +98,7 @@
                     <TextBlock Text="{Binding YellowCardsA}" FontFamily="{StaticResource Seg7}" Foreground="#FFFF00" FontSize="24" VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <!-- Timer — семисегментный -->
+                <!-- Timer -->
                 <Border Grid.Column="1" Background="#0f0000" Padding="12,2" Margin="6,4">
                     <TextBlock Text="{Binding TimerDisplay}"
                                FontFamily="{StaticResource Seg7}"
