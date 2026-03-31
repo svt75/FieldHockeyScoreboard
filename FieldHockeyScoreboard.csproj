@@ -10,4 +10,8 @@
     <RootNamespace>FieldHockeyScoreboard</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Resource Include="Fonts\DSEG7Classic-Bold.ttf" />
+  </ItemGroup>
+
 </Project>
