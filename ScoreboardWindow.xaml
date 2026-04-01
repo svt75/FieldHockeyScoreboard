@@ -104,11 +104,16 @@
                 </Grid.RowDefinitions>
 
                 <!-- Score -->
-                <Viewbox Grid.Row="0" Stretch="Uniform" Margin="6,2">
-                    <TextBlock Text="{Binding ScoreDisplay}"
-                               FontFamily="{StaticResource Seg7}"
-                               Foreground="#FFCC00"/>
-                </Viewbox>
+                <TextBlock Grid.Row="0"
+                           Text="{Binding ScoreDisplay}"
+                           FontFamily="{StaticResource Seg7}"
+                           FontSize="80"
+                           Foreground="#FFCC00"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           SnapsToDevicePixels="True"
+                           TextOptions.TextRenderingMode="Aliased"
+                           TextOptions.TextFormattingMode="Display"/>
 
                 <!-- Timer -->
                 <Border Grid.Row="1" Background="#0a0a0a">
