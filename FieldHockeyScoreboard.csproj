@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <Resource Include="Fonts\DSEG7Classic-Bold.ttf" />
+    <Resource Include="logo_a_default.png" />
+    <Resource Include="logo_b_default.png" />
   </ItemGroup>
 
 </Project>
