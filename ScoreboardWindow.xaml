@@ -46,6 +46,9 @@
             <TextBlock Grid.Column="1" Text="{Binding TeamAName}"
                        FontFamily="Consolas" FontSize="28" FontWeight="Bold"
                        Foreground="#FFFFFF"
+                       SnapsToDevicePixels="True"
+                       TextOptions.TextRenderingMode="Aliased"
+                       TextOptions.TextFormattingMode="Display"
                        HorizontalAlignment="Left" VerticalAlignment="Center"
                        TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
                        Margin="4,0,4,0"
@@ -56,6 +59,9 @@
             <TextBlock Grid.Column="2" Text="{Binding TeamBName}"
                        FontFamily="Consolas" FontSize="28" FontWeight="Bold"
                        Foreground="#FFFFFF"
+                       SnapsToDevicePixels="True"
+                       TextOptions.TextRenderingMode="Aliased"
+                       TextOptions.TextFormattingMode="Display"
                        HorizontalAlignment="Right" VerticalAlignment="Center"
                        TextAlignment="Right"
                        TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
@@ -73,13 +79,16 @@
         </Grid>
 
         <!-- Row 1: Period -->
-        <Border Grid.Row="1" Background="#0a0a0a">
+        <Border Grid.Row="1" Background="#0a0a0a" SnapsToDevicePixels="True">
             <TextBlock Text="{Binding Period}"
                        FontFamily="Consolas"
                        FontSize="20" FontWeight="Bold"
                        Foreground="#FF3333"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
+                       VerticalAlignment="Center"
+                       SnapsToDevicePixels="True"
+                       TextOptions.TextRenderingMode="Aliased"
+                       TextOptions.TextFormattingMode="Display"/>
         </Border>
 
         <!-- Row 2: Score (Viewbox, ~98px) -->
