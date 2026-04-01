@@ -20,117 +20,115 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="68"/>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="22"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="42"/>
+            <RowDefinition Height="34"/>
         </Grid.RowDefinitions>
 
-        <!-- Row 0: Team names (2 lines) + Period -->
-        <Border Grid.Row="0" Background="#0a0a0a">
-            <Grid Margin="8,2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+        <!-- Row 0: Team names — full width, 28px -->
+        <Grid Grid.Row="0" Margin="8,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding TeamAName}"
-                               FontFamily="Consolas" FontSize="26" FontWeight="Bold"
-                               Foreground="#FFFFFF"
-                               SnapsToDevicePixels="True"
-                               TextOptions.TextRenderingMode="Aliased"
-                               TextOptions.TextFormattingMode="Display"
-                               HorizontalAlignment="Left"
-                               TextTrimming="CharacterEllipsis"/>
-                    <TextBlock Text="{Binding TeamACityName}"
-                               FontFamily="Consolas" FontSize="20" FontWeight="Bold"
-                               Foreground="#FF3333"
-                               SnapsToDevicePixels="True"
-                               TextOptions.TextRenderingMode="Aliased"
-                               TextOptions.TextFormattingMode="Display"
-                               HorizontalAlignment="Left"
-                               TextTrimming="CharacterEllipsis"/>
-                </StackPanel>
+            <TextBlock Grid.Column="0" Text="{Binding TeamAName}"
+                       FontFamily="Consolas" FontSize="28" FontWeight="Bold"
+                       Foreground="#FFFFFF"
+                       SnapsToDevicePixels="True"
+                       TextOptions.TextRenderingMode="Aliased"
+                       TextOptions.TextFormattingMode="Display"
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       TextTrimming="CharacterEllipsis"/>
 
-                <TextBlock Grid.Column="1" Text="{Binding Period}"
-                           FontFamily="Consolas" FontSize="22" FontWeight="Bold"
-                           Foreground="#FF3333"
-                           SnapsToDevicePixels="True"
-                           TextOptions.TextRenderingMode="Aliased"
-                           TextOptions.TextFormattingMode="Display"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Margin="12,0"/>
+            <TextBlock Grid.Column="1" Text="{Binding TeamBName}"
+                       FontFamily="Consolas" FontSize="28" FontWeight="Bold"
+                       Foreground="#FFFFFF"
+                       SnapsToDevicePixels="True"
+                       TextOptions.TextRenderingMode="Aliased"
+                       TextOptions.TextFormattingMode="Display"
+                       HorizontalAlignment="Right" VerticalAlignment="Center"
+                       TextTrimming="CharacterEllipsis"/>
+        </Grid>
 
-                <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding TeamBName}"
-                               FontFamily="Consolas" FontSize="26" FontWeight="Bold"
-                               Foreground="#FFFFFF"
-                               SnapsToDevicePixels="True"
-                               TextOptions.TextRenderingMode="Aliased"
-                               TextOptions.TextFormattingMode="Display"
-                               HorizontalAlignment="Right"
-                               TextTrimming="CharacterEllipsis"/>
-                    <TextBlock Text="{Binding TeamBCityName}"
-                               FontFamily="Consolas" FontSize="20" FontWeight="Bold"
-                               Foreground="#FF3333"
-                               SnapsToDevicePixels="True"
-                               TextOptions.TextRenderingMode="Aliased"
-                               TextOptions.TextFormattingMode="Display"
-                               HorizontalAlignment="Right"
-                               TextTrimming="CharacterEllipsis"/>
-                </StackPanel>
-            </Grid>
+        <!-- Row 1: Period — narrow separate row -->
+        <Border Grid.Row="1" Background="#0a0a0a">
+            <TextBlock Text="{Binding Period}"
+                       FontFamily="Consolas" FontSize="18" FontWeight="Bold"
+                       Foreground="#FF3333"
+                       SnapsToDevicePixels="True"
+                       TextOptions.TextRenderingMode="Aliased"
+                       TextOptions.TextFormattingMode="Display"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Border>
 
-        <!-- Row 1: Logo A | Score+Timer | Logo B -->
-        <Grid Grid.Row="1">
+        <!-- Row 2: Logo A | Score | Logo B -->
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="110"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="110"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Logo A — прижат к низу -->
             <Image Grid.Column="0" Source="{Binding LogoASource}"
                    Stretch="Uniform" Margin="4"
-                   HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
                    RenderOptions.BitmapScalingMode="NearestNeighbor"/>
 
-            <!-- Score + Timer stacked -->
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="52"/>
-                </Grid.RowDefinitions>
+            <TextBlock Grid.Column="1"
+                       Text="{Binding ScoreDisplay}"
+                       FontFamily="{StaticResource Seg7}"
+                       FontSize="80"
+                       Foreground="#FFCC00"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       SnapsToDevicePixels="True"
+                       TextOptions.TextRenderingMode="Aliased"
+                       TextOptions.TextFormattingMode="Display"/>
 
-                <!-- Score -->
-                <TextBlock Grid.Row="0"
-                           Text="{Binding ScoreDisplay}"
-                           FontFamily="{StaticResource Seg7}"
-                           FontSize="80"
-                           Foreground="#FFCC00"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           SnapsToDevicePixels="True"
-                           TextOptions.TextRenderingMode="Aliased"
-                           TextOptions.TextFormattingMode="Display"/>
-
-                <!-- Timer -->
-                <Border Grid.Row="1" Background="#0a0a0a">
-                    <TextBlock Text="{Binding TimerDisplay}"
-                               FontFamily="{StaticResource Seg7}"
-                               FontSize="44"
-                               Foreground="#FF3333"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
-                </Border>
-            </Grid>
-
-            <!-- Logo B — прижат к низу -->
             <Image Grid.Column="2" Source="{Binding LogoBSource}"
                    Stretch="Uniform" Margin="4"
-                   HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
                    RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+        </Grid>
+
+        <!-- Row 3: Timer -->
+        <Border Grid.Row="3" Background="#0a0a0a">
+            <TextBlock Text="{Binding TimerDisplay}"
+                       FontFamily="{StaticResource Seg7}"
+                       FontSize="36"
+                       Foreground="#FF3333"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       SnapsToDevicePixels="True"
+                       TextOptions.TextRenderingMode="Aliased"
+                       TextOptions.TextFormattingMode="Display"/>
+        </Border>
+
+        <!-- Row 4: City names — full width, 28px -->
+        <Grid Grid.Row="4" Margin="8,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="{Binding TeamACityName}"
+                       FontFamily="Consolas" FontSize="28" FontWeight="Bold"
+                       Foreground="#FF3333"
+                       SnapsToDevicePixels="True"
+                       TextOptions.TextRenderingMode="Aliased"
+                       TextOptions.TextFormattingMode="Display"
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       TextTrimming="CharacterEllipsis"/>
+
+            <TextBlock Grid.Column="1" Text="{Binding TeamBCityName}"
+                       FontFamily="Consolas" FontSize="28" FontWeight="Bold"
+                       Foreground="#FF3333"
+                       SnapsToDevicePixels="True"
+                       TextOptions.TextRenderingMode="Aliased"
+                       TextOptions.TextFormattingMode="Display"
+                       HorizontalAlignment="Right" VerticalAlignment="Center"
+                       TextTrimming="CharacterEllipsis"/>
         </Grid>
     </Grid>
 </Window>
