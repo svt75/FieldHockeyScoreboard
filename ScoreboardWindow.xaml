@@ -25,7 +25,7 @@
             <RowDefinition Height="52"/>
         </Grid.RowDefinitions>
 
-        <!-- Row 0: Team names (2 lines each) + Period center -->
+        <!-- Row 0: Team names (2 lines) + Period -->
         <Border Grid.Row="0" Background="#0a0a0a">
             <Grid Margin="8,2">
                 <Grid.ColumnDefinitions>
@@ -34,7 +34,6 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Team A: name + city -->
                 <StackPanel Grid.Column="0" VerticalAlignment="Center">
                     <TextBlock Text="{Binding TeamAName}"
                                FontFamily="Consolas" FontSize="26" FontWeight="Bold"
@@ -54,7 +53,6 @@
                                TextTrimming="CharacterEllipsis"/>
                 </StackPanel>
 
-                <!-- Period -->
                 <TextBlock Grid.Column="1" Text="{Binding Period}"
                            FontFamily="Consolas" FontSize="22" FontWeight="Bold"
                            Foreground="#FF3333"
@@ -64,7 +62,6 @@
                            HorizontalAlignment="Center" VerticalAlignment="Center"
                            Margin="12,0"/>
 
-                <!-- Team B: name + city -->
                 <StackPanel Grid.Column="2" VerticalAlignment="Center">
                     <TextBlock Text="{Binding TeamBName}"
                                FontFamily="Consolas" FontSize="26" FontWeight="Bold"
@@ -86,43 +83,36 @@
             </Grid>
         </Border>
 
-        <!-- Row 1: Score (full width, max size) -->
-        <Viewbox Grid.Row="1" Stretch="Uniform" Margin="20,2">
+        <!-- Logos: span rows 1+2, anchored to bottom, behind score and timer -->
+        <Image Grid.Row="1" Grid.RowSpan="2"
+               Source="{Binding LogoASource}"
+               Width="110" Height="110" Stretch="Uniform"
+               HorizontalAlignment="Left" VerticalAlignment="Bottom"
+               Margin="4,0,0,4"
+               RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+
+        <Image Grid.Row="1" Grid.RowSpan="2"
+               Source="{Binding LogoBSource}"
+               Width="110" Height="110" Stretch="Uniform"
+               HorizontalAlignment="Right" VerticalAlignment="Bottom"
+               Margin="0,0,4,4"
+               RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+
+        <!-- Row 1: Score (center, over logos) -->
+        <Viewbox Grid.Row="1" Stretch="Uniform" Margin="110,2,110,2">
             <TextBlock Text="{Binding ScoreDisplay}"
                        FontFamily="{StaticResource Seg7}"
                        Foreground="#FFCC00"/>
         </Viewbox>
 
-        <!-- Row 2: Logo A | Timer | Logo B -->
+        <!-- Row 2: Timer (center) -->
         <Border Grid.Row="2" Background="#0a0a0a">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="60"/>
-                </Grid.ColumnDefinitions>
-
-                <!-- Logo A -->
-                <Image Grid.Column="0" Source="{Binding LogoASource}"
-                       Stretch="Uniform" Margin="4,2"
-                       HorizontalAlignment="Center" VerticalAlignment="Center"
-                       RenderOptions.BitmapScalingMode="NearestNeighbor"/>
-
-                <!-- Timer -->
-                <TextBlock Grid.Column="1"
-                           Text="{Binding TimerDisplay}"
-                           FontFamily="{StaticResource Seg7}"
-                           FontSize="44"
-                           Foreground="#FF3333"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"/>
-
-                <!-- Logo B -->
-                <Image Grid.Column="2" Source="{Binding LogoBSource}"
-                       Stretch="Uniform" Margin="4,2"
-                       HorizontalAlignment="Center" VerticalAlignment="Center"
-                       RenderOptions.BitmapScalingMode="NearestNeighbor"/>
-            </Grid>
+            <TextBlock Text="{Binding TimerDisplay}"
+                       FontFamily="{StaticResource Seg7}"
+                       FontSize="44"
+                       Foreground="#FF3333"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
         </Border>
     </Grid>
 </Window>
