@@ -26,19 +26,21 @@
         </Grid.RowDefinitions>
 
         <!-- Row 0: Logo + Team names (28px, wrap up to 3 lines) -->
-        <Grid Grid.Row="0" Margin="4,4,4,0">
+        <Grid Grid.Row="0" Margin="0,4,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="74"/>
+                <ColumnDefinition Width="76" MinWidth="76" MaxWidth="76"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="74"/>
+                <ColumnDefinition Width="76" MinWidth="76" MaxWidth="76"/>
             </Grid.ColumnDefinitions>
 
             <!-- Logo A -->
-            <Image Grid.Column="0" Source="{Binding LogoASource}"
-                   Width="70" Height="70" Stretch="Uniform"
-                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                   RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+            <Border Grid.Column="0" Width="76" Height="76">
+                <Image Source="{Binding LogoASource}"
+                       Width="70" Height="70" Stretch="Uniform"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+            </Border>
 
             <!-- Team A name (wraps) -->
             <TextBlock Grid.Column="1" Text="{Binding TeamAName}"
@@ -46,7 +48,7 @@
                        Foreground="#FFFFFF"
                        HorizontalAlignment="Left" VerticalAlignment="Center"
                        TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
-                       Margin="6,0,4,0"
+                       Margin="4,0,4,0"
                        MaxHeight="80"
                        LineHeight="28" LineStackingStrategy="BlockLineHeight"/>
 
@@ -57,15 +59,17 @@
                        HorizontalAlignment="Right" VerticalAlignment="Center"
                        TextAlignment="Right"
                        TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
-                       Margin="4,0,6,0"
+                       Margin="4,0,4,0"
                        MaxHeight="80"
                        LineHeight="28" LineStackingStrategy="BlockLineHeight"/>
 
             <!-- Logo B -->
-            <Image Grid.Column="3" Source="{Binding LogoBSource}"
-                   Width="70" Height="70" Stretch="Uniform"
-                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                   RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+            <Border Grid.Column="3" Width="76" Height="76">
+                <Image Source="{Binding LogoBSource}"
+                       Width="70" Height="70" Stretch="Uniform"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+            </Border>
         </Grid>
 
         <!-- Row 1: Period -->
