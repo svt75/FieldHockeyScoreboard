@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         TextOptions.TextFormattingMode="Display"
         TextOptions.TextRenderingMode="Aliased"
+        SnapsToDevicePixels="True"
         Title="Табло"
         Width="560" Height="240"
         WindowStyle="None"
@@ -19,45 +20,53 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="24"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="38"/>
+            <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
 
-        <!-- Row 0: Logo + Team names (28px, wrap up to 3 lines) -->
-        <Grid Grid.Row="0" Margin="0,4,0,0">
+        <!-- Row 0: LOGO + TEAM NAME + SCORE + TEAM NAME + LOGO -->
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="76" MinWidth="76" MaxWidth="76"/>
+                <ColumnDefinition Width="94"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="76" MinWidth="76" MaxWidth="76"/>
+                <ColumnDefinition Width="94"/>
             </Grid.ColumnDefinitions>
 
             <!-- Logo A -->
-            <Border Grid.Column="0" Width="76" Height="76">
+            <Border Grid.Column="0" Width="94" Margin="2,4">
                 <Image Source="{Binding LogoASource}"
-                       Width="70" Height="70" Stretch="Uniform"
+                       Width="90" Height="90" Stretch="Uniform"
                        HorizontalAlignment="Center" VerticalAlignment="Center"
                        RenderOptions.BitmapScalingMode="NearestNeighbor"/>
             </Border>
 
-            <!-- Team A name (wraps) -->
-            <TextBlock Grid.Column="1" Text="{Binding TeamAName}"
-                       FontFamily="Consolas" FontSize="28" FontWeight="Bold"
+            <!-- Team A name -->
+            <TextBlock Grid.Column="1"
+                       Text="{Binding TeamAName}"
+                       FontFamily="Consolas" FontSize="24" FontWeight="Bold"
                        Foreground="#FFFFFF"
                        SnapsToDevicePixels="True"
                        TextOptions.TextRenderingMode="Aliased"
                        TextOptions.TextFormattingMode="Display"
                        HorizontalAlignment="Left" VerticalAlignment="Center"
                        TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
-                       Margin="4,0,4,0"
-                       MaxHeight="80"
-                       LineHeight="28" LineStackingStrategy="BlockLineHeight"/>
+                       Margin="4,0"
+                       MaxHeight="140"
+                       LineHeight="26" LineStackingStrategy="BlockLineHeight"/>
 
-            <!-- Team B name (wraps) -->
-            <TextBlock Grid.Column="2" Text="{Binding TeamBName}"
-                       FontFamily="Consolas" FontSize="28" FontWeight="Bold"
+            <!-- Score -->
+            <Viewbox Grid.Column="2" Stretch="Uniform" Margin="6,10" MaxHeight="130">
+                <TextBlock Text="{Binding ScoreDisplay}"
+                           FontFamily="{StaticResource Seg7}"
+                           Foreground="#FFCC00"/>
+            </Viewbox>
+
+            <!-- Team B name -->
+            <TextBlock Grid.Column="3"
+                       Text="{Binding TeamBName}"
+                       FontFamily="Consolas" FontSize="24" FontWeight="Bold"
                        Foreground="#FFFFFF"
                        SnapsToDevicePixels="True"
                        TextOptions.TextRenderingMode="Aliased"
@@ -65,47 +74,50 @@
                        HorizontalAlignment="Right" VerticalAlignment="Center"
                        TextAlignment="Right"
                        TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
-                       Margin="4,0,4,0"
-                       MaxHeight="80"
-                       LineHeight="28" LineStackingStrategy="BlockLineHeight"/>
+                       Margin="4,0"
+                       MaxHeight="140"
+                       LineHeight="26" LineStackingStrategy="BlockLineHeight"/>
 
             <!-- Logo B -->
-            <Border Grid.Column="3" Width="76" Height="76">
+            <Border Grid.Column="4" Width="94" Margin="2,4">
                 <Image Source="{Binding LogoBSource}"
-                       Width="70" Height="70" Stretch="Uniform"
+                       Width="90" Height="90" Stretch="Uniform"
                        HorizontalAlignment="Center" VerticalAlignment="Center"
                        RenderOptions.BitmapScalingMode="NearestNeighbor"/>
             </Border>
         </Grid>
 
-        <!-- Row 1: Period -->
-        <Border Grid.Row="1" Background="#0a0a0a" SnapsToDevicePixels="True">
-            <TextBlock Text="{Binding Period}"
-                       FontFamily="Consolas"
-                       FontSize="20" FontWeight="Bold"
-                       Foreground="#FF3333"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       SnapsToDevicePixels="True"
-                       TextOptions.TextRenderingMode="Aliased"
-                       TextOptions.TextFormattingMode="Display"/>
-        </Border>
+        <!-- Row 1: Period + Timer -->
+        <Border Grid.Row="1" Background="#0a0a0a">
+            <Grid Margin="10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-        <!-- Row 2: Score (Viewbox, ~98px) -->
-        <Viewbox Grid.Row="2" Stretch="Uniform" Margin="20,2">
-            <TextBlock Text="{Binding ScoreDisplay}"
-                       FontFamily="{StaticResource Seg7}"
-                       Foreground="#FFCC00"/>
-        </Viewbox>
+                <!-- Period (left) -->
+                <TextBlock Grid.Column="0"
+                           Text="{Binding Period}"
+                           FontFamily="Consolas"
+                           FontSize="28" FontWeight="Bold"
+                           Foreground="#FF3333"
+                           SnapsToDevicePixels="True"
+                           TextOptions.TextRenderingMode="Aliased"
+                           TextOptions.TextFormattingMode="Display"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="20,0,0,0"/>
 
-        <!-- Row 3: Timer -->
-        <Border Grid.Row="3" Background="#0a0a0a">
-            <TextBlock Text="{Binding TimerDisplay}"
-                       FontFamily="{StaticResource Seg7}"
-                       FontSize="30"
-                       Foreground="#FF3333"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
+                <!-- Timer (right) -->
+                <TextBlock Grid.Column="1"
+                           Text="{Binding TimerDisplay}"
+                           FontFamily="{StaticResource Seg7}"
+                           FontSize="56"
+                           Foreground="#FF3333"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Margin="0,0,20,0"/>
+            </Grid>
         </Border>
     </Grid>
 </Window>
