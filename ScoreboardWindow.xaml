@@ -22,7 +22,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="68"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="52"/>
         </Grid.RowDefinitions>
 
         <!-- Row 0: Team names (2 lines) + Period -->
@@ -83,36 +82,50 @@
             </Grid>
         </Border>
 
-        <!-- Logos: span rows 1+2, anchored to bottom, behind score and timer -->
-        <Image Grid.Row="1" Grid.RowSpan="2"
-               Source="{Binding LogoASource}"
-               Width="110" Height="110" Stretch="Uniform"
-               HorizontalAlignment="Left" VerticalAlignment="Bottom"
-               Margin="4,0,0,4"
-               RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+        <!-- Row 1: Logo A | Score+Timer | Logo B -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="110"/>
+            </Grid.ColumnDefinitions>
 
-        <Image Grid.Row="1" Grid.RowSpan="2"
-               Source="{Binding LogoBSource}"
-               Width="110" Height="110" Stretch="Uniform"
-               HorizontalAlignment="Right" VerticalAlignment="Bottom"
-               Margin="0,0,4,4"
-               RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+            <!-- Logo A — прижат к низу -->
+            <Image Grid.Column="0" Source="{Binding LogoASource}"
+                   Stretch="Uniform" Margin="4"
+                   HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                   RenderOptions.BitmapScalingMode="NearestNeighbor"/>
 
-        <!-- Row 1: Score (center, over logos) -->
-        <Viewbox Grid.Row="1" Stretch="Uniform" Margin="110,2,110,2">
-            <TextBlock Text="{Binding ScoreDisplay}"
-                       FontFamily="{StaticResource Seg7}"
-                       Foreground="#FFCC00"/>
-        </Viewbox>
+            <!-- Score + Timer stacked -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="52"/>
+                </Grid.RowDefinitions>
 
-        <!-- Row 2: Timer (center) -->
-        <Border Grid.Row="2" Background="#0a0a0a">
-            <TextBlock Text="{Binding TimerDisplay}"
-                       FontFamily="{StaticResource Seg7}"
-                       FontSize="44"
-                       Foreground="#FF3333"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
-        </Border>
+                <!-- Score -->
+                <Viewbox Grid.Row="0" Stretch="Uniform" Margin="6,2">
+                    <TextBlock Text="{Binding ScoreDisplay}"
+                               FontFamily="{StaticResource Seg7}"
+                               Foreground="#FFCC00"/>
+                </Viewbox>
+
+                <!-- Timer -->
+                <Border Grid.Row="1" Background="#0a0a0a">
+                    <TextBlock Text="{Binding TimerDisplay}"
+                               FontFamily="{StaticResource Seg7}"
+                               FontSize="44"
+                               Foreground="#FF3333"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+
+            <!-- Logo B — прижат к низу -->
+            <Image Grid.Column="2" Source="{Binding LogoBSource}"
+                   Stretch="Uniform" Margin="4"
+                   HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                   RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+        </Grid>
     </Grid>
 </Window>
