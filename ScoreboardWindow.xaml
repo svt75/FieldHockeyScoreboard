@@ -19,45 +19,47 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="54"/>
-            <RowDefinition Height="36"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="26"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="42"/>
+            <RowDefinition Height="38"/>
         </Grid.RowDefinitions>
 
-        <!-- Row 0: Team Names — 2 строки, крупно -->
-        <Grid Grid.Row="0" Margin="6,0">
+        <!-- Row 0: Team names — 2 lines each (name + city) -->
+        <Grid Grid.Row="0" Margin="8,2,8,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Team A: название + город -->
-            <TextBlock Grid.Column="0" Text="{Binding TeamAName}"
-                       FontFamily="Consolas" FontSize="22" FontWeight="Bold"
-                       Foreground="#FFFFFF"
-                       HorizontalAlignment="Center" VerticalAlignment="Center"
-                       TextAlignment="Center"
-                       TextWrapping="Wrap"
-                       MaxHeight="54"
-                       LineHeight="26" LineStackingStrategy="BlockLineHeight"/>
+            <!-- Team A -->
+            <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <TextBlock Text="{Binding TeamAName}"
+                           FontFamily="Consolas" FontSize="20" FontWeight="Bold"
+                           Foreground="#FFFFFF" TextTrimming="CharacterEllipsis"/>
+                <TextBlock Text="{Binding TeamACityName}"
+                           FontFamily="Consolas" FontSize="16" FontWeight="Bold"
+                           Foreground="#AAAAAA" TextTrimming="CharacterEllipsis"/>
+            </StackPanel>
 
-            <!-- Team B: название + город -->
-            <TextBlock Grid.Column="1" Text="{Binding TeamBName}"
-                       FontFamily="Consolas" FontSize="22" FontWeight="Bold"
-                       Foreground="#FFFFFF"
-                       HorizontalAlignment="Center" VerticalAlignment="Center"
-                       TextAlignment="Center"
-                       TextWrapping="Wrap"
-                       MaxHeight="54"
-                       LineHeight="26" LineStackingStrategy="BlockLineHeight"/>
+            <!-- Team B -->
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <TextBlock Text="{Binding TeamBName}"
+                           FontFamily="Consolas" FontSize="20" FontWeight="Bold"
+                           Foreground="#FFFFFF" TextTrimming="CharacterEllipsis"
+                           HorizontalAlignment="Right"/>
+                <TextBlock Text="{Binding TeamBCityName}"
+                           FontFamily="Consolas" FontSize="16" FontWeight="Bold"
+                           Foreground="#AAAAAA" TextTrimming="CharacterEllipsis"
+                           HorizontalAlignment="Right"/>
+            </StackPanel>
         </Grid>
 
         <!-- Row 1: Period -->
         <Border Grid.Row="1" Background="#0a0a0a">
             <TextBlock Text="{Binding Period}"
                        FontFamily="Consolas"
-                       FontSize="26" FontWeight="Bold"
+                       FontSize="20" FontWeight="Bold"
                        Foreground="#FF3333"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"/>
@@ -76,7 +78,7 @@
                    HorizontalAlignment="Center" VerticalAlignment="Center"
                    RenderOptions.BitmapScalingMode="NearestNeighbor"/>
 
-            <Viewbox Grid.Column="1" Stretch="Uniform" Margin="2,2">
+            <Viewbox Grid.Column="1" Stretch="Uniform" Margin="4,4">
                 <TextBlock Text="{Binding ScoreDisplay}"
                            FontFamily="{StaticResource Seg7}"
                            Foreground="#FFCC00"/>
@@ -88,11 +90,11 @@
                    RenderOptions.BitmapScalingMode="NearestNeighbor"/>
         </Grid>
 
-        <!-- Row 3: Timer only -->
+        <!-- Row 3: Timer -->
         <Border Grid.Row="3" Background="#0a0a0a">
             <TextBlock Text="{Binding TimerDisplay}"
                        FontFamily="{StaticResource Seg7}"
-                       FontSize="36"
+                       FontSize="32"
                        Foreground="#FF3333"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"/>

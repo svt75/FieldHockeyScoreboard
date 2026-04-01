@@ -42,6 +42,21 @@ namespace FieldHockeyScoreboard
             set { _teamBName = value; OnPropertyChanged(); }
         }
 
+        private string _teamACityName = "";
+        private string _teamBCityName = "";
+
+        public string TeamACityName
+        {
+            get => _teamACityName;
+            set { _teamACityName = value; OnPropertyChanged(); }
+        }
+
+        public string TeamBCityName
+        {
+            get => _teamBCityName;
+            set { _teamBCityName = value; OnPropertyChanged(); }
+        }
+
         public int ScoreA
         {
             get => _scoreA;

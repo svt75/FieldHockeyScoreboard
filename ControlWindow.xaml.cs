@@ -25,18 +25,6 @@ namespace FieldHockeyScoreboard
         private void ScoreBPlus_Click(object sender, RoutedEventArgs e) => _game.ScoreB++;
         private void ScoreBMinus_Click(object sender, RoutedEventArgs e) => _game.ScoreB--;
 
-        // Cards A
-        private void GreenAPlus_Click(object sender, RoutedEventArgs e) => _game.GreenCardsA++;
-        private void GreenAMinus_Click(object sender, RoutedEventArgs e) => _game.GreenCardsA--;
-        private void YellowAPlus_Click(object sender, RoutedEventArgs e) => _game.YellowCardsA++;
-        private void YellowAMinus_Click(object sender, RoutedEventArgs e) => _game.YellowCardsA--;
-
-        // Cards B
-        private void GreenBPlus_Click(object sender, RoutedEventArgs e) => _game.GreenCardsB++;
-        private void GreenBMinus_Click(object sender, RoutedEventArgs e) => _game.GreenCardsB--;
-        private void YellowBPlus_Click(object sender, RoutedEventArgs e) => _game.YellowCardsB++;
-        private void YellowBMinus_Click(object sender, RoutedEventArgs e) => _game.YellowCardsB--;
-
         // Timer
         private void StartPause_Click(object sender, RoutedEventArgs e)
         {
@@ -71,10 +59,12 @@ namespace FieldHockeyScoreboard
             }
         }
 
-        // Period
+        // Period — 4 тайма
         private void Period1_Click(object sender, RoutedEventArgs e) => _game.Period = "1 ТАЙМ";
-        private void PeriodBreak_Click(object sender, RoutedEventArgs e) => _game.Period = "ПЕРЕРЫВ";
         private void Period2_Click(object sender, RoutedEventArgs e) => _game.Period = "2 ТАЙМ";
+        private void Period3_Click(object sender, RoutedEventArgs e) => _game.Period = "3 ТАЙМ";
+        private void Period4_Click(object sender, RoutedEventArgs e) => _game.Period = "4 ТАЙМ";
+        private void PeriodBreak_Click(object sender, RoutedEventArgs e) => _game.Period = "ПЕРЕРЫВ";
         private void PeriodShootout_Click(object sender, RoutedEventArgs e) => _game.Period = "БУЛЛИТЫ";
 
         // Logos
