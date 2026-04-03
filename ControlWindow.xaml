@@ -218,6 +218,8 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
             <Button x:Name="BtnMonitor" Content="&#x1F5B5; 2-й МОНИТОР" Height="42"
                     Style="{StaticResource BtnStyle}" Click="MoveToMonitor_Click" Padding="16,6"/>
+            <Button x:Name="BtnDemo" Content="ДЕМО ЛОГО" Height="42"
+                    Style="{StaticResource BtnStyle}" Click="DemoLogo_Click" Padding="16,6"/>
             <Button Content="&#x26A0; СБРОС МАТЧА" Height="42"
                     Style="{StaticResource BtnDanger}" Click="ResetMatch_Click" Padding="16,6"/>
         </StackPanel>

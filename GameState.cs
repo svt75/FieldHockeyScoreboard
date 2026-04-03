@@ -26,22 +26,27 @@ namespace FieldHockeyScoreboard
         {
             _timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
             _timer.Tick += Timer_Tick;
-            LoadDefaultLogos();
         }
 
-        private void LoadDefaultLogos()
+        public void LoadDemoLogos()
         {
             try
             {
                 var logoA = new BitmapImage(new Uri("pack://application:,,,/logo_a_default.png"));
                 logoA.Freeze();
-                _logoASource = logoA;
+                LogoASource = logoA;
 
                 var logoB = new BitmapImage(new Uri("pack://application:,,,/logo_b_default.png"));
                 logoB.Freeze();
-                _logoBSource = logoB;
+                LogoBSource = logoB;
             }
             catch { }
+        }
+
+        public void ClearLogos()
+        {
+            LogoASource = null;
+            LogoBSource = null;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

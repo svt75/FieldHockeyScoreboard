@@ -90,6 +90,24 @@ namespace FieldHockeyScoreboard
             return dlg.ShowDialog() == true ? dlg.FileName : null;
         }
 
+        // Demo logos toggle
+        private bool _demoOn;
+        private void DemoLogo_Click(object sender, RoutedEventArgs e)
+        {
+            if (_demoOn)
+            {
+                _game.ClearLogos();
+                BtnDemo.Content = "ДЕМО ЛОГО";
+                _demoOn = false;
+            }
+            else
+            {
+                _game.LoadDemoLogos();
+                BtnDemo.Content = "УБРАТЬ ДЕМО";
+                _demoOn = true;
+            }
+        }
+
         // Monitor switch
         private void MoveToMonitor_Click(object sender, RoutedEventArgs e)
         {
